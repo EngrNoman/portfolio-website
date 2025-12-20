@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Case Study: Real-Time IoT Analytics</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        bgDark: '#0B1120',       // Darker background
+                        cardDark: '#151e32',     // Slightly lighter for cards
+                        brand: '#6366f1',        // Indigo Primary
+                        brandLight: '#818cf8',   // Light Indigo
+                        success: '#10b981',      // Emerald Green
+                        warning: '#f59e0b',      // Amber
+                        codeBg: '#1e1e2e',       // Dark Code BG
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B1120; }
+        ::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tech Stack Badges Gradient */
+        .tech-badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+        }
+        .tech-badge:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Code Syntax Highlighting Colors */
+        .py-def { color: #c678dd; } /* Purple */
+        .py-func { color: #61afef; } /* Blue */
+        .py-str { color: #98c379; } /* Green */
+        .py-comment { color: #5c6370; font-style: italic; } /* Grey */
+        .py-class { color: #e5c07b; } /* Yellow */
+    </style>
+</head>
+<body class="bg-bgDark text-slate-300 font-sans antialiased overflow-x-hiddenSelection">
+
+    <!-- Navigation (Project Name Focused) -->
+    <nav class="fixed w-full z-50 bg-bgDark/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Left: Back Arrow + Project Name -->
+                <div class="flex items-center gap-4">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                    <span class="text-lg font-bold text-white tracking-wide">
+                        Project: <span class="text-brandLight">Serverless Automated ETL Pipeline on AWS (Infrastructure as Code)</span>
+                    </span>
+                </div>
+                <!-- Right: Sections -->
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#overview" class="hover:text-brandLight transition-colors">Overview</a>
+                    <a href="#stack" class="hover:text-brandLight transition-colors">Tech Stack</a>
+                    <a href="#architecture" class="hover:text-brandLight transition-colors">Architecture</a>
+                    <a href="#code" class="hover:text-brandLight transition-colors">Code</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-slate-800">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <div class="fade-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-mono mb-6 border border-success/20">
+                    <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+                    PROJECT STATUS: PRODUCTION
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                   Serverless Automated <br> 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandLight to-purple-400"> ETL Pipeline on AWS</span>
+                </h1>
+                <p class="text-lg text-slate-400 mb-8 max-w-xl leading-relaxed">
+                    A fully automated, cloud-native data pipeline designed to extract, transform, and load (ETL) data from external APIs into a Data Lake.<strong>50k+ events/daily.</strong> The entire infrastructure is provisioned using <strong>Terraform (IaC),</strong> ensuring reproducibility and scalability.The system leverages <strong>AWS Lambda</strong> for serverless compute and enforces strict data quality checks before storage.
+                </p>
+                
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-3 gap-6 border-t border-slate-800 pt-8">
+                    <div>
+                        <p class="text-3xl font-bold text-white">50k</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Events / Daily</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold text-white">200ms</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Latency</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold text-white">99.9%</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Uptime</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image / Diagram Preview -->
+            <div class="fade-up relative">
+                <!-- Abstract Glow -->
+                <div class="absolute -inset-4 bg-brand/20 blur-3xl rounded-full -z-10"></div>
+                
+                <!-- Main Card -->
+                <div class="bg-cardDark border border-slate-700 rounded-xl overflow-hidden shadow-2xl relative group">
+                    <!-- Browser Header -->
+                    <div class="h-8 bg-slate-900 border-b border-slate-700 flex items-center px-4 gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                    </div>
+                    <!-- Image Area -->
+                    <div class="aspect-video bg-slate-900 flex items-center justify-center relative">
+                        <!-- Placeholder Content -->
+                        <div class="text-center p-8">
+                            <!-- <i class="fa-solid fa-network-wired text-6xl text-slate-700 mb-4 group-hover:text-brandLight transition-colors duration-500"></i>
+                            <p class="text-slate-500 text-sm">Main System Architecture Diagram</p>
+                            <p class="text-xs text-slate-600 mt-2">(Replace this div with your diagram image)</p> -->
+                            <img src="/assest/diagram.png" alt="">
+                        </div>
+                        <!-- Use this img tag for real image: 
+                        <img src="architecture.png" alt="Architecture" class="w-full h-full object-cover"> 
+                        -->
+                    </div>
+                    <!-- Floating Badge -->
+                    <div class="absolute bottom-4 right-4 bg-slate-900/90 backdrop-blur px-4 py-2 rounded-lg border border-slate-700 shadow-lg">
+                        <p class="text-xs text-slate-300 font-mono"><i class="fa-brands fa-aws mr-2 text-warning"></i>Deployed on AWS</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- The Context (Problem vs Solution) -->
+    <section id="overview" class="py-20 bg-cardDark/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Problem -->
+                <div class="fade-up bg-bgDark border border-slate-800 p-8 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <i class="fa-solid fa-triangle-exclamation text-9xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center"><i class="fa-solid fa-bug"></i></span>
+                        The Problem
+                    </h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Manual data extraction scripts are prone to errors, difficult to scale, and require constant maintenance. Furthermore, manually configuring cloud resources ("ClickOps") leads to inconsistent environments and security risks. I needed a solution that <br></br>
+                        Zero-Maintenance: No servers to manage.<br></br>
+                        Reliable: Runs automatically on a schedule.<br></br>
+                        Scalable: Can handle increased data volume without crashing.
+                    </p>
+                </div>
+
+                <!-- Solution -->
+                <div class="fade-up bg-bgDark border border-slate-800 p-8 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <i class="fa-solid fa-lightbulb text-9xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center"><i class="fa-solid fa-check"></i></span>
+                        The Solution
+                    </h3>
+                    <p class="text-slate-400 leading-relaxed">
+                       I engineered an event-driven architecture using AWS Serverless services: <br>
+                        <ul>
+
+                           <li> Ingestion: Python scripts extract data from the source API.</li><br>
+                            <li>Validation: Utilized Pydantic to enforce strict schema validation. Invalid records are automatically routed to a "Quarantine" zone for review.</li><br>
+
+                            <li>Transformation: Pandas cleans and formats the data into analytics-ready CSVs.</li><br>
+
+
+                            <li>Automation: Amazon EventBridge triggers the pipeline daily. </li><br>
+                            <li>Infrastructure: Terraform manages the entire lifecycle (S3 Buckets, IAM Roles, Lambda Functions, and Layers).</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="stack" class="py-16 border-y border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-sm font-mono text-slate-500 uppercase tracking-wider mb-8 text-center">Technologies Used</h3>
+            <div class="flex flex-wrap justify-center gap-4 fade-up">
+                <!-- Badges -->
+                <div class="tech-badge flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300">
+                    <i class="fa-brands fa-python text-yellow-300"></i> Python 3.9
+                </div>
+               <!-- Cloud: AWS -->
+                <div class="tech-badge flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300">
+                    <i class="fa-brands fa-aws text-orange-400"></i>
+                    AWS (Lambda, S3, EventBridge, IAM, CloudWatch)
+                </div>
+
+                <!-- Infrastructure as Code -->
+                <div class="tech-badge flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300">
+                    <i class="fa-solid fa-diagram-project text-purple-400"></i>
+                    Terraform
+                </div>
+
+
+                <!-- Libraries -->
+                <div class="tech-badge flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300">
+                    <i class="fa-solid fa-table text-green-400"></i>
+                    Pandas (Data Transformation)
+                </div>
+
+                <div class="tech-badge flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300">
+                    <i class="fa-solid fa-shield-halved text-blue-400"></i>
+                    Pydantic (Data Validation)
+                </div>
+
+                <div class="tech-badge flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300">
+                    <i class="fa-solid fa-cloud text-orange-300"></i>
+                    Boto3 (AWS SDK)
+                </div>
+
+<!-- Version Control -->
+                <div class="tech-badge flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300">
+                    <i class="fa-brands fa-git-alt text-red-400"></i>
+                    Git
+                </div>
+
+                <div class="tech-badge flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300">
+                    <i class="fa-brands fa-github text-slate-100"></i>
+                    GitHub
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Architecture -->
+    <section id="architecture" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 fade-up">
+            <h2 class="text-3xl font-bold text-white mb-4">System Data Flow</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto">How data travels from edge sensors to the analytics dashboard.</p>
+        </div>
+
+        <div class="relative fade-up">
+            <!-- Vertical Line for Mobile / Horizontal for Desktop -->
+            <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-800 md:hidden"></div>
+            <div class="absolute top-8 left-0 right-0 h-0.5 bg-slate-800 hidden md:block top-[2.5rem]"></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 relative z-10">
+
+    <!-- Stage 1 -->
+    <div class="flex lg:flex-col items-center lg:text-center gap-4">
+        <div class="w-14 h-14 rounded-full bg-cardDark border border-slate-700 flex items-center justify-center shadow-xl">
+            <i class="fa-solid fa-clock text-purple-400 text-xl"></i>
+        </div>
+        <div class="bg-cardDark p-4 rounded-xl border border-slate-800 w-full">
+            <h4 class="text-white font-semibold text-sm mb-1">Trigger</h4>
+            <p class="text-[11px] text-slate-500 mb-1">EventBridge</p>
+            <p class="text-xs text-slate-400">
+                Scheduled daily workflow at 9:00 AM UTC.
+            </p>
+        </div>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="flex lg:flex-col items-center lg:text-center gap-4">
+        <div class="w-14 h-14 rounded-full bg-cardDark border border-slate-700 flex items-center justify-center shadow-xl">
+            <i class="fa-solid fa-cloud-arrow-down text-blue-400 text-xl"></i>
+        </div>
+        <div class="bg-cardDark p-4 rounded-xl border border-slate-800 w-full">
+            <h4 class="text-white font-semibold text-sm mb-1">Extraction</h4>
+            <p class="text-[11px] text-slate-500 mb-1">Lambda + API</p>
+            <p class="text-xs text-slate-400">
+                Fetches raw JSON from external API.
+            </p>
+        </div>
+    </div>
+
+    <!-- Stage 3 -->
+    <div class="flex lg:flex-col items-center lg:text-center gap-4">
+        <div class="w-14 h-14 rounded-full bg-cardDark border border-slate-700 flex items-center justify-center shadow-xl">
+            <i class="fa-solid fa-box-archive text-yellow-400 text-xl"></i>
+        </div>
+        <div class="bg-cardDark p-4 rounded-xl border border-slate-800 w-full">
+            <h4 class="text-white font-semibold text-sm mb-1">Raw Archival</h4>
+            <p class="text-[11px] text-slate-500 mb-1">S3 Raw</p>
+            <p class="text-xs text-slate-400">
+                Raw JSON stored for backup & idempotency.
+            </p>
+        </div>
+    </div>
+
+    <!-- Stage 4 -->
+    <div class="flex lg:flex-col items-center lg:text-center gap-4">
+        <div class="w-14 h-14 rounded-full bg-cardDark border border-slate-700 flex items-center justify-center shadow-xl">
+            <i class="fa-solid fa-shield-check text-green-400 text-xl"></i>
+        </div>
+        <div class="bg-cardDark p-4 rounded-xl border border-slate-800 w-full">
+            <h4 class="text-white font-semibold text-sm mb-1">Validation</h4>
+            <p class="text-[11px] text-slate-500 mb-1">Pydantic</p>
+            <p class="text-xs text-slate-400">
+                Schema validation & quarantine on failure.
+            </p>
+        </div>
+    </div>
+
+    <!-- Stage 5 -->
+    <div class="flex lg:flex-col items-center lg:text-center gap-4">
+        <div class="w-14 h-14 rounded-full bg-cardDark border border-slate-700 flex items-center justify-center shadow-xl">
+            <i class="fa-solid fa-gears text-indigo-400 text-xl"></i>
+        </div>
+        <div class="bg-cardDark p-4 rounded-xl border border-slate-800 w-full">
+            <h4 class="text-white font-semibold text-sm mb-1">Transform</h4>
+            <p class="text-[11px] text-slate-500 mb-1">Pandas</p>
+            <p class="text-xs text-slate-400">
+                Flattening, casting & business rules.
+            </p>
+        </div>
+    </div>
+
+    <!-- Stage 6 -->
+    <div class="flex lg:flex-col items-center lg:text-center gap-4">
+        <div class="w-14 h-14 rounded-full bg-cardDark border border-slate-700 flex items-center justify-center shadow-xl">
+            <i class="fa-solid fa-database text-orange-400 text-xl"></i>
+        </div>
+        <div class="bg-cardDark p-4 rounded-xl border border-slate-800 w-full">
+            <h4 class="text-white font-semibold text-sm mb-1">Loading</h4>
+            <p class="text-[11px] text-slate-500 mb-1">S3 Processed</p>
+            <p class="text-xs text-slate-400">
+                Clean CSV ready for analytics.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+        </div>
+    </section>
+
+    <!-- Code Walkthrough -->
+    <section id="code" class="py-20 bg-cardDark/20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Explanation Panel -->
+                <div class="fade-up">
+                    <h2 class="text-2xl font-bold text-white mb-4">Technical Implementation</h2>
+                    <p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                        The core logic resides in the <code class="bg-slate-800 px-1 rounded text-brandLight">StreamHandler</code> class. 
+                        It manages the Spark session and defines the transformation logic.
+                    </p>
+                    <div class="space-y-4 mb-6 ">
+                        <div class="p-4 bg-bgDark rounded-lg border border-slate-800">
+                            <h5 class="text-white font-bold text-sm mb-1"><i class="fa-solid fa-bolt text-yellow-500 mr-2"></i>Optimization Tip</h5>
+                            <p class="text-xs text-slate-400">Used <code>Broadcasting</code> for the sensor metadata lookup to avoid expensive shuffles across the network.</p>
+                        </div>
+                        <div class="p-4 bg-bgDark rounded-lg border border-slate-800">
+                            <h5 class="text-white font-bold text-sm mb-1"><i class="fa-solid fa-shield-halved text-green-500 mr-2"></i>Data Quality</h5>
+                            <p class="text-xs text-slate-400">Schema enforcement on read ensures that corrupt JSON packets don't crash the stream.</p>
+                        </div>
+                    </div>
+                    <a
+  href="https://github.com/EngrNoman/automated-cloud-data-pipeline"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg
+         bg-cardDark border border-slate-700
+         text-slate-300 hover:text-white
+         hover:border-brand hover:bg-slate-800
+         transition-all duration-200 group"
+>
+    <i class="fa-brands fa-github text-xl group-hover:scale-110 transition-transform"></i>
+    <span class="text-sm font-medium">View Source Code</span>
+</a>
+
+                </div>
+
+                <!-- IDE Panel -->
+                <div class="lg:col-span-2 fade-up">
+    <div class="rounded-xl overflow-hidden shadow-2xl bg-[#1e1e2e] border border-slate-800">
+
+        <!-- IDE Tabs -->
+        <div class="flex bg-[#21252b] text-xs font-mono">
+            <div class="px-4 py-3 bg-[#1e1e2e] text-white border-t-2 border-brand cursor-pointer">
+                main_pipeline.py
+            </div>
+            <div class="px-4 py-3 text-slate-500 hover:text-slate-300 cursor-pointer">
+                validator.py
+            </div>
+            <div class="px-4 py-3 text-slate-500 hover:text-slate-300 cursor-pointer">
+                load_data.py
+            </div>
+        </div>
+
+        <!-- Code Content -->
+        <div class="p-6 overflow-x-auto">
+<pre class="font-mono text-xs md:text-sm leading-6">
+<span class="py-comment"># Entry point for AWS Lambda-based ETL Pipeline</span>
+<span class="py-def">import</span> sys
+<span class="py-def">import</span> os
+<span class="py-def">import</span> json
+<span class="py-def">from</span> datetime <span class="py-def">import</span> datetime
+<span class="py-def">from</span> utils.logger <span class="py-def">import</span> get_logger
+
+<span class="py-comment"># Importing pipeline modules</span>
+<span class="py-def">from</span> src.ingestion.product_api <span class="py-def">import</span> extract_product_data
+<span class="py-def">from</span> src.transformation.validator <span class="py-def">import</span> validate_product_dataset
+<span class="py-def">from</span> src.transformation.transformation <span class="py-def">import</span> process_validated_data
+<span class="py-def">from</span> src.load.load_data <span class="py-def">import</span> save_data
+
+<span class="py-comment"># Load environment variables (local support)</span>
+<span class="py-def">try</span>:
+    <span class="py-def">from</span> dotenv <span class="py-def">import</span> load_dotenv
+    load_dotenv()
+<span class="py-def">except</span> ImportError:
+    <span class="py-def">pass</span>
+
+<span class="py-comment"># Logger setup</span>
+logger = get_logger(<span class="py-str">"MAIN_PIPELINE"</span>, <span class="py-str">"main_pipeline"</span>)
+
+<span class="py-def">def</span> <span class="py-func">run_pipeline</span>(event=<span class="py-def">None</span>, context=<span class="py-def">None</span>):
+    logger.info(<span class="py-str">"--- Pipeline Started ---"</span>)
+
+    <span class="py-def">try</span>:
+        <span class="py-comment"># STEP 1: Extraction (Raw Layer)</span>
+        logger.info(<span class="py-str">"Extracting data from external API..."</span>)
+        raw_data = extract_product_data()
+
+        <span class="py-def">if</span> <span class="py-def">not</span> raw_data:
+            logger.critical(<span class="py-str">"No data extracted. Exiting."</span>)
+            <span class="py-def">return</span>
+
+        raw_path = save_data(raw_data, <span class="py-str">"raw"</span>, <span class="py-str">"products_raw"</span>, <span class="py-str">"json"</span>)
+        logger.info(<span class="py-str">f"Raw data saved at: {raw_path}"</span>)
+
+        <span class="py-comment"># STEP 2: Validation (Quality Gate)</span>
+        products = raw_data.get(<span class="py-str">"products"</span>, [])
+        valid_records, invalid_records = validate_product_dataset(products)
+
+        logger.info(
+            <span class="py-str">f"Validation Results | Passed={len(valid_records)} | Failed={len(invalid_records)}"</span>
+        )
+
+        <span class="py-comment"># Save invalid records to Quarantine</span>
+        <span class="py-def">if</span> invalid_records:
+            quarantine_path = save_data(
+                invalid_records, <span class="py-str">"quarantine"</span>, <span class="py-str">"quarantine_errors"</span>, <span class="py-str">"json"</span>
+            )
+            logger.warning(<span class="py-str">f"Invalid records moved to: {quarantine_path}"</span>)
+
+        <span class="py-def">if</span> <span class="py-def">not</span> valid_records:
+            logger.error(<span class="py-str">"No valid records to process. Stopping."</span>)
+            <span class="py-def">return</span>
+
+        <span class="py-comment"># STEP 3: Transformation</span>
+        logger.info(<span class="py-str">"Transforming validated data..."</span>)
+        transformed_df = process_validated_data(valid_records)
+        logger.info(<span class="py-str">f"Transformed data shape: {transformed_df.shape}"</span>)
+
+        <span class="py-comment"># STEP 4: Load (Processed Layer)</span>
+        processed_path = save_data(
+            transformed_df, <span class="py-str">"processed"</span>, <span class="py-str">"clean_products"</span>, <span class="py-str">"csv"</span>
+        )
+        logger.info(<span class="py-str">f"Processed data saved at: {processed_path}"</span>)
+
+        logger.info(<span class="py-str">"--- Pipeline Finished Successfully ---"</span>)
+
+    <span class="py-def">except</span> Exception <span class="py-def">as</span> e:
+        logger.critical(<span class="py-str">f"Pipeline crashed: {e}"</span>)
+
+<span class="py-def">if</span> <span class="py-class">__name__</span> == <span class="py-str">"__main__"</span>:
+    run_pipeline()
+</pre>
+        </div>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Challenges / Footer -->
+    <footer class="bg-bgDark pt-20 pb-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Biggest Challenge Faced</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                       Dependency Management in Serverless Environments: The biggest hurdle was managing external libraries (Pandas, Pydantic) on AWS Lambda. Since my local development environment (Windows) differs from Lambda’s execution environment (Amazon Linux), simple uploads failed. <br>
+                        <br>
+                       How I Solved It: I implemented Custom AWS Lambda Layers using Terraform. I sourced platform-specific binary wheels (Manylinux) to ensure the dependencies were compatible with the cloud environment, separating the application logic from heavy libraries.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Future Improvements</h3>
+                    <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
+                    To further enhance this pipeline, I plan to:
+
+                        <li>Alerting: Integrate AWS SNS to send email notifications in case of pipeline failure.</li>
+
+                        <li>Visualization: Connect Amazon QuickSight to the S3 Processed Zone to build a live dashboard.</li>
+
+                        <li>CI/CD: Implement GitHub Actions to automatically deploy infrastructure changes upon code push.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center pt-8 border-t border-slate-800">
+                <a href="../index.html" class="inline-block bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-8 rounded-full transition-colors mb-6">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to All Projects
+                </a>
+                <p class="text-slate-600 text-xs">&copy; 2023 Data Engineering Showcase.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        // Simple Intersection Observer for scroll animations
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
