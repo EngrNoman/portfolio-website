@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Data Pipeline Case Study</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 20px;
+        background: white;
+    }
+
+    h1 {
+        font-size: 28px;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-top: 30px;
+        color: #34495e;
+    }
+
+    h3 {
+        margin-top: 15px;
+        color: #2c3e50;
+    }
+
+    p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    ul {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .highlight {
+        background: #eef5ff;
+        border-left: 5px solid #3498db;
+        padding: 12px;
+        margin: 15px 0;
+        border-radius: 5px;
+    }
+
+    /* Diagram */
+    .diagram {
+        text-align: center;
+        margin: 25px 0;
+    }
+
+    .diagram img {
+        width: 100%;
+        max-width: 900px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        padding: 8px;
+        background: #fff;
+    }
+
+    /* Table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        overflow-x: auto;
+        display: block;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+        min-width: 120px;
+    }
+
+    th {
+        background: #3498db;
+        color: white;
+    }
+
+    .footer {
+        margin-top: 40px;
+        padding: 20px;
+        background: #f0f3f6;
+        text-align: center;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    /* 🔥 RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 22px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        p, li {
+            font-size: 14px;
+        }
+
+        .container {
+            padding: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 20px;
+        }
+
+        .highlight {
+            font-size: 14px;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🚀 Automated Marketing Data Pipeline Case Study</h1>
+
+    <h2>📌 Problem Statement</h2>
+    <p>
+        Marketing teams use multiple advertising platforms such as Meta Ads, Google Ads, and others.
+        Each platform provides data in different formats, making analysis difficult.
+    </p>
+
+    <ul>
+        <li>Manual data cleaning takes time</li>
+        <li>No unified schema</li>
+        <li>High risk of errors</li>
+        <li>Delayed reporting</li>
+    </ul>
+
+    <div class="highlight">
+        Teams spend more time preparing data than analyzing it, increasing operational cost.
+    </div>
+
+    <h2>🎯 Objective</h2>
+    <ul>
+        <li>Automate data transformation</li>
+        <li>Unify multiple data sources</li>
+        <li>Reduce manual effort</li>
+        <li>Deliver ready-to-use analytics data</li>
+    </ul>
+
+    <h2>📊 Data Sources</h2>
+    <ul>
+        <li>Meta Ads</li>
+        <li>Google Ads</li>
+        <li>Third Ad Platform</li>
+    </ul>
+
+    <h2>🛠️ Tools & Technologies</h2>
+    <ul>
+        <li>dbt</li>
+        <li>BigQuery</li>
+        <li>SQL</li>
+        <li>GitHub Actions</li>
+    </ul>
+
+    <h2>🏗️ Architecture</h2>
+    <p>High-level automated data pipeline architecture:</p>
+
+    <div class="diagram">
+        <img src="../assest/marketing_artcit.png" alt="Architecture Diagram">
+        <p><em>Replace with your actual architecture diagram</em></p>
+    </div>
+
+    <h2>⚙️ Approach</h2>
+
+    <h3>Step 1: Data Ingestion</h3>
+    <p>Loaded raw data from multiple platforms into BigQuery.</p>
+
+    <h3>Step 2: Data Cleaning</h3>
+    <ul>
+        <li>Standardized column names</li>
+        <li>Handled missing values</li>
+        <li>Fixed data types</li>
+    </ul>
+
+    <h3>Step 3: Transformation</h3>
+    <ul>
+        <li>CTR, CPC, Conversions calculated</li>
+    </ul>
+
+    <h3>Step 4: Unification</h3>
+    <p>Combined all sources into a single analytics-ready table.</p>
+
+    <h3>Step 5: Automation</h3>
+    <p>dbt used for automated transformations.</p>
+
+    <h2>⏰ Orchestration & Automation</h2>
+    <ul>
+        <li>Pipeline runs every Sunday automatically</li>
+        <li>Data ready by Monday morning</li>
+        <li>No manual intervention required</li>
+    </ul>
+
+    <div class="highlight">
+        Managers get fresh, analysis-ready data every week without waiting.
+    </div>
+
+    <h2>📈 Results</h2>
+
+    <table>
+        <tr>
+            <th>Metric</th>
+            <th>Before</th>
+            <th>After</th>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td>2–3 hours</td>
+            <td>10–15 minutes</td>
+        </tr>
+        <tr>
+            <td>Workflow</td>
+            <td>Manual</td>
+            <td>Automated</td>
+        </tr>
+        <tr>
+            <td>Error Risk</td>
+            <td>High</td>
+            <td>Low</td>
+        </tr>
+    </table>
+
+    <h2>🎯 Business Impact</h2>
+    <ul>
+        <li>70–80% time saved</li>
+        <li>Reduced operational cost</li>
+        <li>Faster decision making</li>
+    </ul>
+
+    <h2>🧠 Conclusion</h2>
+    <p>
+        This project transforms fragmented marketing data into a fully automated,
+        scalable analytics system.
+    </p>
+
+    <div class="footer">
+        🚀 Fully automated pipeline delivering business-ready data every week
+    </div>
+
+</div>
+
+</body>
+</html>
