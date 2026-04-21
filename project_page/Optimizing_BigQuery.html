@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BigQuery Case Study</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e2e8f0;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        color: #38bdf8;
+        margin-top: 30px;
+    }
+
+    p {
+        line-height: 1.7;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 25px;
+        margin-top: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .highlight {
+        color: #22c55e;
+        font-weight: bold;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    pre {
+        background: #020617;
+        padding: 15px;
+        border-radius: 10px;
+        overflow-x: auto;
+        color: #38bdf8;
+        font-size: 14px;
+    }
+
+    /* TABLE WRAPPER FOR RESPONSIVE */
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        min-width: 600px;
+    }
+
+    th, td {
+        border: 1px solid #334155;
+        padding: 12px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    th {
+        background-color: #1e293b;
+    }
+
+    .badge {
+        background: #22c55e;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    .header-box {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .subtitle {
+        color: #94a3b8;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+
+        h1 {
+            font-size: 26px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        .container {
+            padding: 20px 12px;
+        }
+
+        .card {
+            padding: 18px;
+        }
+
+        p, li {
+            font-size: 14px;
+        }
+
+        pre {
+            font-size: 12px;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header-box">
+        <h1>🚀 BigQuery Case Study</h1>
+        <p class="subtitle">Data Architecture & Query Cost Optimization</p>
+        <p><span class="badge">97% Cost Reduction</span></p>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div class="card">
+        <h2>1. Project Overview</h2>
+        <p>
+            This project focuses on handling <span class="highlight">200GB+ blockchain data</span> 
+            using BigQuery to improve query efficiency and reduce cost.
+        </p>
+    </div>
+
+    <!-- PROBLEM -->
+    <div class="card">
+        <h2>2. The Problem</h2>
+        <ul>
+            <li>High query cost due to full table scans</li>
+            <li>Slow performance with large aggregations</li>
+            <li>Unnecessary data scanning (I/O inefficiency)</li>
+        </ul>
+    </div>
+
+    <!-- SOLUTION -->
+    <div class="card">
+        <h2>3. The Solution</h2>
+
+        <h3>A. Partitioning</h3>
+        <p>
+            Data was partitioned by <span class="highlight">block_timestamp (daily)</span> 
+            to enable partition pruning.
+        </p>
+
+        <h3>B. Clustering</h3>
+        <p>
+            Data was clustered by <span class="highlight">from_address</span> 
+            to optimize query performance.
+        </p>
+    </div>
+
+    <!-- SQL -->
+    <div class="card">
+        <h2>4. SQL Implementation</h2>
+
+<pre>
+CREATE OR REPLACE TABLE optimized_transactions
+PARTITION BY DATE(block_timestamp)
+CLUSTER BY from_address
+AS
+SELECT 
+    hash, 
+    from_address, 
+    value, 
+    gas_price, 
+    block_timestamp
+FROM raw_transactions;
+</pre>
+
+    </div>
+
+    <!-- RESULTS -->
+    <div class="card">
+        <h2>5. Results</h2>
+
+        <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Raw Table</th>
+                <th>Optimized Table</th>
+                <th>Gain</th>
+            </tr>
+            <tr>
+                <td>Data Processed</td>
+                <td>29.42 GB</td>
+                <td>881 MB</td>
+                <td class="highlight">97% Saving</td>
+            </tr>
+            <tr>
+                <td>I/O Pattern</td>
+                <td>Full Scan</td>
+                <td>Partition Read</td>
+                <td>Efficient</td>
+            </tr>
+            <tr>
+                <td>Performance</td>
+                <td>Slow</td>
+                <td>Fast</td>
+                <td>Improved</td>
+            </tr>
+        </table>
+        </div>
+
+    </div>
+
+    <!-- INSIGHTS -->
+    <div class="card">
+        <h2>6. Key Insights</h2>
+        <ul>
+            <li>Storage design impacts cost more than query complexity</li>
+            <li>Partitioning reduces unnecessary data scans</li>
+            <li>Clustering improves aggregation performance</li>
+        </ul>
+    </div>
+
+    <!-- CONCLUSION -->
+    <div class="card">
+        <h2>7. Conclusion</h2>
+        <p>
+            This project demonstrates how proper data architecture in BigQuery can significantly 
+            reduce cost and improve performance for large-scale datasets.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
