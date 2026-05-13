@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Engineer Portfolio</title>
-    <link rel="icon" type="image/png" href="./assest/DP.jpeg">
+    <link rel="icon" type="image/png" href="./assets/DP.jpeg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -116,17 +116,17 @@
                     Available for Freelance & Full-time
                 </div>
                 <h4 class="text-5xl md:text-4xl font-bold leading-tight mb-6">
-                    Cloud Data Engineer <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">AWS</span> <br> & Python Specialist
+                    Cloud Data Engineer <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">GCP-BigQuery</span> <br> & Python Specialist
                 </h4>
                  
                 <p class="text-textMuted text-lg mb-8 max-w-lg leading-relaxed">
-                    Hi, I'm <span class="text-white font-semibold">Noman Mahmood</span>. Results-oriented Data Engineer with a strong focus on building scalable ETL pipelines and automating backend data flows. passionate about architecting cloud solutions on AWS using Python and SQL.
+                    Hi, I'm <span class="text-white font-semibold">Noman Mahmood</span>. Results-oriented Data Engineer with a strong focus on building scalable ETL pipelines and automating backend data flows. passionate about architecting cloud solutions on GCP using Python and SQL.
                 </p>
                 <div class="flex gap-4">
                     <a href="#projects" class="px-8 py-3 bg-primary hover:bg-blue-600 text-white font-semibold rounded-full shadow-lg shadow-blue-500/25 transition-all transform hover:scale-105">
                         View Work
                     </a>
-                    <a href="./assest/Noman Resume.pdf" 
+                    <a href="./assets/Noman Resume.pdf" 
                     target="_blank"
                     class="px-8 py-3 border border-white/20 hover:border-white text-white font-semibold rounded-full transition-all flex items-center gap-2 group">
                         <i class="fa-solid fa-download group-hover:translate-y-1 transition-transform"></i> Resume
@@ -158,7 +158,7 @@
                         REPLACE 'src' below with your actual photo URL. 
                         Example: src="my-photo.jpg"
                     -->
-                    <img src="./assest/DP.jpeg" 
+                    <img src="./assets/DP.jpeg" 
                          alt="Profile" 
                          class="relative w-full h-full object-cover blob-img border-4 border-white/10 shadow-2xl z-10 grayscale hover:grayscale-0 transition-all duration-500">
                 </div>
@@ -269,7 +269,63 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
 
+                <!-- Project Card 0.2 -->
+                 <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
 
+                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-indigo-900/40 z-10"></div>
+
+                        <img 
+                            src="./assets/blockchain_pipeline.png" 
+                            alt="dbt BigQuery Automation Project"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        >
+                    </div>
+
+                    <div class="p-6">
+
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors text-white">
+                            Blockchain Data Automation
+                        </h3>
+
+                        <p class="text-gray-400 text-sm mb-4">
+                            End-to-end dbt pipeline for processing and modeling massive Bitcoin datasets natively in BigQuery.
+                        </p>
+
+                        <div class="mb-4 text-sm text-gray-300 space-y-1">
+                            <p>📦 Handled 500GB+ of raw transaction data</p>
+                            <p>🐋 Engineered "Whale Tracking" for high-value movements</p>
+                            <p>🛠️ Integrated CI/CD using GitHub Actions & Docker</p>
+                            <p>✅ Automated data quality via dbt generic tests</p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 text-xs rounded bg-orange-500/10 text-orange-400 border border-orange-500/20">
+                                dbt Core
+                            </span>
+
+                            <span class="px-2 py-1 text-xs rounded bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
+                                BigQuery
+                            </span>
+
+                            <span class="px-2 py-1 text-xs rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                                Docker
+                            </span>
+
+                            <span class="px-2 py-1 text-xs rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                                CI/CD
+                            </span>
+                        </div>
+
+                        <a 
+                            href="./project_page/automate_Blockchain_Pipeline/" 
+                            class="inline-block text-sm font-semibold text-white border-b border-primary pb-1 hover:text-primary transition-colors"
+                        >
+                            View Technical Case Study →
+                        </a>
+
+                    </div>
+                </div>
                     <!-- Project Card 0.1 -->
 
                 <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
@@ -282,7 +338,7 @@
 
                         <!-- Project Image -->
                         <img 
-                            src="./assest/bigquerry1.0.0.png" 
+                            src="./assets/bigquerry1.0.0.png" 
                             alt="BigQuery Optimization Project"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
@@ -345,7 +401,7 @@
 
                         <!-- Project Image -->
                         <img 
-                            src="./assest/marketing_artcit.png" 
+                            src="./assets/marketing_artcit.png" 
                             alt="Marketing Data Pipeline Project"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
@@ -404,7 +460,7 @@
                     <div class="h-48 bg-gray-800 relative overflow-hidden">
                         <!-- Placeholder Pattern -->
                         <div class="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-purple-900/40 z-10"></div>
-                        <img src="./assest/diagram.png" alt="Project 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="./assets/diagram.png" alt="Project 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Serverless Automated ETL Pipeline on AWS</h3>
@@ -420,45 +476,8 @@
                     </div>
                 </div>
 
-                <!-- Project Card 2 -->
-                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
-                    <div class="h-48 bg-gray-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-green-900/40 to-teal-900/40 z-10"></div>
-                        <img src="https://placehold.co/600x400/1e293b/FFF?text=Data+Lakehouse" alt="Project 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">E-commerce Data Lake</h3>
-                        <p class="text-textMuted text-sm mb-4 line-clamp-3">
-                            Built a Delta Lake architecture to unify batch and streaming data, enabling ACID transactions on S3.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-2 py-1 text-xs rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Delta Lake</span>
-                            <span class="px-2 py-1 text-xs rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Airflow</span>
-                            <span class="px-2 py-1 text-xs rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">dbt</span>
-                        </div>
-                        <a href="#" class="inline-block text-sm font-semibold text-white border-b border-primary pb-1 hover:text-primary transition-colors">View Case Study</a>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
-                    <div class="h-48 bg-gray-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-red-900/40 to-orange-900/40 z-10"></div>
-                        <img src="https://placehold.co/600x400/1e293b/FFF?text=API+ETL" alt="Project 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Financial API ETL</h3>
-                        <p class="text-textMuted text-sm mb-4 line-clamp-3">
-                            Automated extraction of financial market data from REST APIs, transformation with Pandas, and loading into Snowflake.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-2 py-1 text-xs rounded bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">Python</span>
-                            <span class="px-2 py-1 text-xs rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Snowflake</span>
-                            <span class="px-2 py-1 text-xs rounded bg-green-500/10 text-green-400 border border-green-500/20">Docker</span>
-                        </div>
-                        <a href="#" class="inline-block text-sm font-semibold text-white border-b border-primary pb-1 hover:text-primary transition-colors">View Case Study</a>
-                    </div>
-                </div>
+                
+                
 
             </div>
         </div>
