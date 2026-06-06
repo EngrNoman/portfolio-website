@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail | E-commerce Clickstream Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --bg: #ffffff;
+            --card-bg: #f8fafc;
+            --text-main: #1e293b;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation & Hero */
+        nav { height: 70px; display: flex; align-items: center; border-bottom: 1px solid var(--border); }
+        .project-hero { padding: 60px 0; }
+        h1 { font-size: 2.5rem; font-weight: 800; color: var(--dark); margin-bottom: 20px; }
+
+        /* Grid System */
+        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; }
+        
+        /* Diagram Styling */
+        .arch-container { background: var(--dark); border-radius: 16px; padding: 20px; margin: 30px 0; }
+        .arch-container img { 
+            width: 100%; 
+            max-width: 600px; /* Diagram ka size control karne ke liye */
+            height: auto; 
+            display: block; 
+            margin: 0 auto; 
+            border-radius: 8px;
+        }
+
+        /* Sidebar & Buttons */
+        .side-card { background: var(--card-bg); padding: 20px; border-radius: 16px; border: 1px solid var(--border); }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: var(--dark); color: white; border-radius: 10px; text-decoration: none; font-weight: 600; }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .content-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .sidebar { order: -1; } /* Sidebar mobile par upar chala jayega */
+        }
+    </style>
+</head>
+<body>
+
+    <nav><div class="container"><a href="#" style="font-weight: 800; color: var(--dark); text-decoration: none;">NOMAN<span>.</span>MAHMOOD</a></div></nav>
+
+    <header class="project-hero container">
+        <h1>E-commerce Clickstream Analytics</h1>
+        <p>An end-to-end streaming pipeline to ingest, process, and visualize real-time user activity data.</p>
+    </header>
+
+    <main class="container content-grid">
+        <div class="content-body">
+            <h2 class="section-title" style="margin-bottom:15px;">System Architecture</h2>
+            <div class="arch-container">
+                <!-- Image size is now controlled by CSS class -->
+                <img src="../../assets/gcp-stream.png" alt="Architecture Diagram">
+            </div>
+            <p>I utilized a modern GCP tech stack to ensure high availability and scalability: <strong>Pub/Sub</strong> for ingestion, <strong>Apache Beam/Dataflow</strong> for real-time processing, and <strong>Looker Studio</strong> for real-time dashboarding[cite: 1].</p>
+            <br>
+            <a href="https://github.com/EngrNoman/gcp-streaming-pipeline" class="btn"><i class="fab fa-github"></i> View Repository</a>
+        </div>
+
+        <aside class="sidebar">
+            <div class="side-card">
+                <h4>Tech Stack</h4>
+                <ul style="list-style: none; margin-top: 10px;">
+                    <li><i class="fas fa-check-circle" style="color:var(--primary); margin-right:8px;"></i> Python & Apache Beam</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--primary); margin-right:8px;"></i> Google Pub/Sub</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--primary); margin-right:8px;"></i> Google Dataflow</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--primary); margin-right:8px;"></i> Google BigQuery</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer style="padding: 40px 0; text-align: center; color: #64748b;">Built for Data Excellence &copy; 2026</footer>
+</body>
+</html>
