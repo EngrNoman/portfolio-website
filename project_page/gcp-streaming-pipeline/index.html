@@ -8,67 +8,116 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        :root { --primary: #2563eb; --dark: #0f172a; --bg: #ffffff; --card-bg: #f8fafc; --text-main: #1e293b; --text-muted: #64748b; --border: #e2e8f0; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.7; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        :root {
+            /* Dark Mode Theme Matches Main Portfolio */
+            --primary: #3b82f6;      /* Blue */
+            --accent: #8b5cf6;       /* Purple */
+            --bg: #030712;           /* Deepest dark */
+            --card-bg: #111827;      /* Card background */
+            --text-main: #f3f4f6;    /* White-ish */
+            --text-muted: #9ca3af;   /* Grey */
+            --border: rgba(255, 255, 255, 0.05);
+        }
 
-        /* Header */
-        .case-header { padding: 80px 0; border-bottom: 1px solid var(--border); }
-        .case-header h1 { font-size: 3rem; color: var(--dark); margin-bottom: 10px; }
-        .tag { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; }
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #374151; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navigation */
+        nav { height: 80px; display: flex; align-items: center; background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-weight: 800; font-size: 1.2rem; color: var(--text-main); text-decoration: none; }
+        .logo span { color: var(--primary); }
+        .meta-info { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
+        .meta-info i { color: var(--primary); margin-right: 8px; }
+
+        /* Header / Hero */
+        .case-header { padding: 80px 0 40px; position: relative; border-bottom: 1px solid var(--border); }
+        .case-header::before { content: ''; position: absolute; top: -50%; left: -10%; width: 500px; height: 500px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; filter: blur(100px); z-index: -1; pointer-events: none; }
+        .case-header h1 { font-size: 3rem; color: var(--text-main); margin: 15px 0 10px; line-height: 1.2; letter-spacing: -1px; }
+        .tag { background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 30px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(59, 130, 246, 0.2); display: inline-block; }
 
         /* Sections */
-        section { margin: 50px 0; }
-        h2 { font-size: 1.8rem; color: var(--dark); margin-bottom: 20px; border-left: 4px solid var(--primary); padding-left: 15px; }
-        p { margin-bottom: 20px; font-size: 1.1rem; }
+        section { margin: 60px 0; }
+        h2 { font-size: 1.8rem; color: var(--text-main); margin-bottom: 20px; border-left: 4px solid var(--primary); padding-left: 15px; }
+        p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-muted); }
+        strong { color: var(--text-main); }
+        ul li { color: var(--text-muted); margin-bottom: 10px; font-size: 1.05rem; }
         
-        .arch-container { background: var(--dark); border-radius: 16px; padding: 25px; margin: 30px 0; }
-        .arch-container img { width: 100%; height: auto; border-radius: 8px; display: block; margin: 0 auto; max-width: 600px; }
+        /* Architecture Image Container */
+        .arch-container { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; margin: 30px 0; border: 1px solid var(--border); display: flex; justify-content: center; align-items: center; }
+        .arch-container img { width: 100%; height: auto; border-radius: 12px; display: block; max-width: 800px; object-fit: contain; }
 
-        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
-        .tech-item { background: var(--card-bg); padding: 15px; border-radius: 10px; font-weight: 600; border: 1px solid var(--border); }
+        /* Tech Grid */
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px; }
+        .tech-item { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(10px); padding: 20px; border-radius: 16px; font-weight: 600; border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; color: var(--text-main); transition: transform 0.3s; }
+        .tech-item:hover { transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.3); }
+        .tech-item i { color: var(--primary); font-size: 1.5rem; }
         
-        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--dark); color: white; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; }
-        .btn:hover { background: var(--primary); }
+        /* Button */
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: var(--primary); color: white; border-radius: 30px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.25); }
+        .btn:hover { background: #2563eb; transform: translateY(-3px); }
 
-        @media (max-width: 768px) { .case-header h1 { font-size: 2rem; } }
+        footer { padding: 40px 0; text-align: center; color: var(--text-muted); border-top: 1px solid var(--border); background-color: #050a18; margin-top: 60px; }
+
+        /* Responsive */
+        @media (max-width: 768px) { 
+            .case-header h1 { font-size: 2.2rem; } 
+            section { margin: 40px 0; }
+        }
     </style>
 </head>
 <body>
 
-    <header class="case-header container">
-        <span class="tag">Engineering Case Study</span>
-        <h1>E-commerce Clickstream Analytics</h1>
-        <p style="color: var(--text-muted);">Building a scalable real-time data pipeline on Google Cloud Platform.</p>
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">NOMAN<span>.</span>MAHMOOD</a>
+            <div class="meta-info">
+                <span><i class="fas fa-code-branch"></i> v1.0.0</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="case-header">
+        <div class="container">
+            <span class="tag">Engineering Case Study</span>
+            <h1>E-commerce Clickstream Analytics</h1>
+            <p style="color: var(--text-muted); max-width: 800px; font-size: 1.15rem;">Building a scalable real-time data pipeline on Google Cloud Platform.</p>
+        </div>
     </header>
 
     <main class="container">
         
         <section>
             <h2>Problem Statement</h2>
-            <p>E-commerce platforms generate massive volumes of user activity data, including page views, add-to-cart events, and purchases, every second[cite: 1]. Traditional relational databases are unable to process this high-velocity, unstructured streaming data in real-time, resulting in significant latency[cite: 1]. The challenge was to architect a system capable of handling high-volume event streams without data loss while ensuring low-latency analytics[cite: 1].</p>
+            <p>E-commerce platforms generate massive volumes of user activity data, including page views, add-to-cart events, and purchases, every second. Traditional relational databases are unable to process this high-velocity, unstructured streaming data in real-time, resulting in significant latency. The challenge was to architect a system capable of handling high-volume event streams without data loss while ensuring low-latency analytics.</p>
         </section>
 
         <section>
             <h2>Solution Approach</h2>
-            <p>I designed a cloud-native, scalable architecture to bridge the gap between raw data ingestion and business intelligence[cite: 1]:</p>
+            <p>I designed a cloud-native, scalable architecture to bridge the gap between raw data ingestion and business intelligence:</p>
             <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Ingestion:</strong> Used Google Cloud Pub/Sub to decouple data producers from the processing engine, ensuring durability[cite: 1].</li>
-                <li><strong>Processing:</strong> Implemented Apache Beam on Cloud Dataflow to perform real-time windowing and data enrichment[cite: 1].</li>
-                <li><strong>Storage & Analytics:</strong> Streamed processed records directly into BigQuery to enable instantaneous dashboarding via Looker Studio[cite: 1].</li>
+                <li><strong>Ingestion:</strong> Used Google Cloud Pub/Sub to decouple data producers from the processing engine, ensuring durability.</li>
+                <li><strong>Processing:</strong> Implemented Apache Beam on Cloud Dataflow to perform real-time windowing and data enrichment.</li>
+                <li><strong>Storage & Analytics:</strong> Streamed processed records directly into BigQuery to enable instantaneous dashboarding via Looker Studio.</li>
             </ul>
         </section>
 
         <section>
             <h2>Technical Challenges</h2>
-            <p>The primary challenge was managing the complexity of out-of-order event data and ensuring the infrastructure could scale automatically[cite: 1]. I addressed this by implementing sliding windows in the Apache Beam pipeline to handle time-series data accurately and utilizing Terraform (IaC) to ensure that environment configuration was reproducible and error-free[cite: 1].</p>
+            <p>The primary challenge was managing the complexity of out-of-order event data and ensuring the infrastructure could scale automatically. I addressed this by implementing sliding windows in the Apache Beam pipeline to handle time-series data accurately and utilizing Terraform (IaC) to ensure that environment configuration was reproducible and error-free.</p>
         </section>
 
         <section>
             <h2>System Architecture</h2>
             <div class="arch-container">
-                <img src="../../assets/gcp-stream.jpg" alt="Architecture Diagram">
+                <img src="../../assets/gcp-stream.jpg" alt="GCP Streaming Architecture Diagram">
             </div>
         </section>
 
@@ -83,10 +132,16 @@
         </section>
 
         <section style="text-align: center; margin-top: 80px;">
-            <a href="https://github.com/EngrNoman/gcp-streaming-pipeline" class="btn"><i class="fab fa-github"></i> View Full Repository</a>
+            <a href="https://github.com/EngrNoman/gcp-streaming-pipeline" target="_blank" class="btn">
+                <i class="fab fa-github"></i> View Full Repository
+            </a>
         </section>
     </main>
 
-    <footer style="padding: 60px 0; text-align: center; color: var(--text-muted);">Built by Noman Mahmood &copy; 2026</footer>
+    <footer>
+        <div class="container">
+            <p>Built by Noman Mahmood &copy; 2026</p>
+        </div>
+    </footer>
 </body>
 </html>
